@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { connectDb } from "@/lib/connectDB";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import { NextResponse } from "next/server";
 
 
 const handler =  nextAuth({
@@ -59,13 +60,14 @@ callbacks:{
                 const existUser = await userCollection.findOne({email})
                 if(!existUser){
                     const res = await userCollection.insertOne(user)
-                    return user
+                    return NextResponse.json({user})
                 }else{
-                    return user
+                    return NextResponse.json({user})
                 }
 
             } catch (error) {
                 console.log(error,'next aut error from callback  ');
+                NextResponse.json({error})
             }
             
         }else{

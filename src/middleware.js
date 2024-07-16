@@ -9,7 +9,7 @@ export const middleware =async (request) => {
    
     middlewareExecuted = true; 
 
-    const token = cookies(request).get("next-auth.session-token");
+    const token = cookies(request).get("__Secure-next-auth.session-token");
     console.log(token, 'token in middleware');
 
     if (!token) {

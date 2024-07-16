@@ -1,5 +1,6 @@
 import { connectDb } from "@/lib/connectDB";
 import { ObjectId } from "mongodb";
+import { NextResponse } from "next/server";
 
 export const DELETE = async (request, { params }) => {
   const db = await connectDb();
@@ -41,10 +42,10 @@ export const PATCH = async(request,{params})=>{
             {upsert:true}
         )
         console.log(res);
-        return Response.json({message:"Data updated",response:res})
+        return NextResponse.json({message:"Data updated",response:res})
 
 
     } catch (error) {
-        return Response.json(error)
+        return NextResponse.json(error)
     }
 }

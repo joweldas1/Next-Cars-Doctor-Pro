@@ -29,7 +29,6 @@ const Login = () => {
       return router.push('/')
     }
 
-    console.log(res);
 
   }
   return (
