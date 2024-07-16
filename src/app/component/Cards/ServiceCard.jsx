@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const ServiceCard = ({data}) => {
-    const {img,title,price} =data||{}
+    const {img,title,price,_id} =data||{}
 
   return (
     <div className="w-full mx-auto mt-24">
@@ -13,7 +14,8 @@ const ServiceCard = ({data}) => {
           <h2 className="card-title">{title}</h2>
           <div className="card-actions justify-between items-center">
           <p className="text-primary font-semibold">Price:{price}$</p>
-            <button className="btn btn-primary">Buy Now</button>
+          <Link href={`/services/${_id}`}><button className="btn btn-primary">View details</button>
+          </Link>
           </div>
         </div>
       </div>

@@ -1,8 +1,14 @@
 import React from 'react';
 import ServiceCard from '../Cards/ServiceCard';
-import { services } from '@/lib/services';
+import { getService } from '@/service/getServices';
 
-const Services = () => {
+
+
+
+
+const Services =async () => {
+    const data=await getService()
+    const service = data.service
     return (
         <div className='my-10 container mx-auto'>
             <div>
@@ -11,7 +17,7 @@ const Services = () => {
             </div>
             <div className='grid grid-cols-3'>
                 {
-                    services.map((data,idx)=>(<ServiceCard key={idx} data={data}/>))
+                    service?.map((data,idx)=>(<ServiceCard key={idx} data={data}/>))
                 }
             
             </div>

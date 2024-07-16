@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
@@ -8,15 +9,17 @@ import { FaGithub } from "react-icons/fa";
 
 
 const SignUp = () => {
+  const router = useRouter()
   const handleLogin=async(e)=>{
         e.preventDefault()
         const newUser = {
             name : e.target.name.value,
+            image:e.target.image.value,
             email : e.target.email.value,
             password : e.target.password.value,
         }
 
-        const res = await fetch('http://localhost:3000/signup/api',{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/signup/api`,{
           method:"POST",
           body:JSON.stringify(newUser),
           headers:{
@@ -26,8 +29,8 @@ const SignUp = () => {
 
         if(res.status===201||200){
               e.target.reset()
+              router.push('/login')
         }
-        console.log(res);
   }
   return (
     <div>
@@ -55,6 +58,18 @@ const SignUp = () => {
                     placeholder="Name"
                     className="input input-bordered"
                     name="name"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Image url</span>
+                  </label>
+                  <input
+                    type="url"
+                    placeholder="Image url"
+                    className="input input-bordered"
+                    name="image"
                     required
                   />
                 </div>

@@ -6,8 +6,14 @@ import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import {signIn} from "next-auth/react"
+import { useRouter, useSearchParams } from "next/navigation";
+import SocialLogin from "../component/shared/SocialLogin";
+
 
 const Login = () => {
+  const router = useRouter()
+  const searchParams= useSearchParams()
+  const path = searchParams.get('redirect')
   const handleLogin=async(e)=>{
     e.preventDefault()
     const email = e.target.email.value
@@ -16,10 +22,15 @@ const Login = () => {
     const res = await signIn('credentials',{
       email,
       password,
-      redirect:false
+      redirect:true,
+      callbackUrl:path?path:"/"
     })
+    if(res.status===200){
+      return router.push('/')
+    }
 
     console.log(res);
+
   }
   return (
     <div>
@@ -71,14 +82,12 @@ const Login = () => {
                   <button className="btn btn-primary " type="submit">Login</button>
                 </div>
               </form>
-              <div className="text-center">
+              <div className="text-center py-3">
                 <h1>Or Sing in with</h1>
                 <div className="w-full mx-auto flex justify-center items-center gap-3 text-3xl mt-2">
-                  <FaGoogle />
-                  <FaFacebook />
-                  <FaGithub />
+                 <SocialLogin/>
                 </div>
-                <h1>Or Create Account <span className="text-primary font-semibold"> <Link href={'/signup'}> Sing Up</Link> </span></h1>
+                <h1 className="text-red-700">Or Create Account <span className="text-primary font-semibold"> <Link href={'/signup'}> Sing Up</Link> </span></h1>
               </div>
             </div>
           </div>
