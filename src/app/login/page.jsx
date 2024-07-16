@@ -12,8 +12,8 @@ import SocialLogin from "../component/shared/SocialLogin";
 
 const Login = () => {
   const router = useRouter()
-  const searchParams= useSearchParams()
-  const path = searchParams.get('redirect')
+
+
   const handleLogin=async(e)=>{
     e.preventDefault()
     const email = e.target.email.value
@@ -23,7 +23,7 @@ const Login = () => {
       email,
       password,
       redirect:true,
-      callbackUrl:path?path:"/"
+      callbackUrl:"/"
     })
     if(res.status===200){
       return router.push('/')
