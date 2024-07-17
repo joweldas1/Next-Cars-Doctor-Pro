@@ -2,11 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaFacebook } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+
 import {signIn} from "next-auth/react"
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter,} from "next/navigation";
 import SocialLogin from "../component/shared/SocialLogin";
 
 
@@ -22,8 +20,8 @@ const Login = () => {
     const res = await signIn('credentials',{
       email,
       password,
-      redirect:true,
-      callbackUrl:"/"
+      redirect:false,
+      
     })
     if(res.status===200){
       return router.push('/')

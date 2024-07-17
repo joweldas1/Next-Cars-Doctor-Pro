@@ -4,8 +4,6 @@ let middlewareExecuted = false;
 
 export const middleware =async (request) => {
     if (middlewareExecuted) {return NextResponse.next();}
-    const pathName = request.nextUrl.pathName
-    if(pathName?.includes('api')){return NextResponse.next()}
    
     middlewareExecuted = true; 
 

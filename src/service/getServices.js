@@ -13,9 +13,3 @@ export const getServiceDetails=async(id)=>{
 
 }
 
-// export const getServiceDetails=async(id)=>{
-//     const res = await fetch(`http://localhost:3000/services/api/${id}`)
-//     const services = await res.json()
-//     return services
-
-// }
