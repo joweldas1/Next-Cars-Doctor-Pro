@@ -11,7 +11,6 @@ const MyBookings = () => {
     const session = useSession()
     const email = session?.data?.user?.email
     const [myService,setMyService] = useState()
-    console.log(email,'session');
 
     const loadData = async()=>{
         const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/my-bookings/api/${email}`)
@@ -25,14 +24,10 @@ const MyBookings = () => {
         toast.success("Deleted Done")
         loadData()
       }
-      console.log(res,'deleted-=----------------->');
     }
 
-    useEffect(()=>{
-        loadData()
-    },[])
+ 
 
-    console.log(myService,'---------------->data');
 
     return (
         <div>

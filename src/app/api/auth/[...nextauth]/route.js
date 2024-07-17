@@ -23,7 +23,6 @@ providers:[
         },
   async   authorize(credentials){
         const {email,password} =  credentials
-        console.log(email,password,'----->');
         if(!email||!password){
            throw new Error("email or password not okay ")
         }
@@ -66,8 +65,7 @@ callbacks:{
                 }
 
             } catch (error) {
-                console.log(error,'next aut error from callback  ');
-                NextResponse.json({error})
+               return NextResponse.json({error})
             }
             
         }else{

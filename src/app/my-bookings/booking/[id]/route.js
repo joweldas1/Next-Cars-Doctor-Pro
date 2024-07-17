@@ -41,7 +41,6 @@ export const PATCH = async(request,{params})=>{
             {$set:{...updated}},
             {upsert:true}
         )
-        console.log(res);
         return NextResponse.json({message:"Data updated",response:res})
 
 

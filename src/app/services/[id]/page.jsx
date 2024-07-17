@@ -10,7 +10,6 @@ export const metaData = {
 
 const page = async ({ params }) => {
   const {data} = await getServiceDetails(params.id);
-  console.log('------------------------------->',data.service,);
   const { title, img, price ,_id} = data?.service || "";
 
   return (

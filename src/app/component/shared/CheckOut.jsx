@@ -8,7 +8,6 @@ const CheckOut = ({service}) => {
     const { title, img, price ,_id} = service
     const session=useSession()
     const email=session?.data?.user?.email
-    console.log(email);
 
 
     const handleSubmit=async(e)=>{
@@ -24,7 +23,6 @@ const CheckOut = ({service}) => {
            price:price
         }
 
-        console.log({newBooking,service});
       
         const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/checkOut/api/newBookings`,{
           method:"POST",
@@ -38,7 +36,6 @@ const CheckOut = ({service}) => {
           toast.success("Submitted your order")
             e.target.reset()
         }
-        console.log(res,'checkout page new booking response');
 
     }
 

@@ -7,7 +7,6 @@ import React from "react";
 const Navbar = () => {
   const session = useSession();
   const user = session?.data?.user;
-  console.log(session, "------->");
   const navItem = [
     {
       title: "Home",

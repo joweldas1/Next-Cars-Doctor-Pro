@@ -8,10 +8,8 @@ export const POST=async(request)=>{
 
 try {
     const newBooking = await bookingCollection.insertOne(booking)
-    console.log(booking,'new booking0------------>');
     return NextResponse.json({message:"service booked successfully"})
 } catch (error) {
-    console.log(error);
     return NextResponse.json({message:"something went wrong"},{status:400 })
 }
 }

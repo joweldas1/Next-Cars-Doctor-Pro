@@ -12,7 +12,6 @@ export const GET=async()=>{
         return NextResponse.json({message:"data inserted successfully"})
         
     } catch (error) {
-        console.log(error,'services get route');
         return NextResponse.json({error})
 
     }

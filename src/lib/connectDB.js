@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
 let db;
@@ -16,10 +18,10 @@ export const connectDb = async () => {
     });
 
 
-    db  = client.db("car-doctor-pro")
+    db  = await client.db("car-doctor-pro")
     return db
 
   } catch (error) {
-    console.log(error);
+    return NextResponse()
   }
 };

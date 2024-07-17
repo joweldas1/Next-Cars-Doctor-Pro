@@ -42,7 +42,6 @@ useEffect(()=>{
           toast.success("Submitted your order")
           
         }
-        console.log(res,'checkout page new booking response');
 
     }
 
